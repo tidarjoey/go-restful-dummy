@@ -1,4 +1,4 @@
-#Dummy restful app with Go.
+# Dummy restful app with Go.
 
-##Using:
+## Using:
 * go version go1.11.4 darwin/amd64
