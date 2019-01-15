@@ -10,18 +10,23 @@ import (
 	"fmt"
 	// The "net/http" library has methods to implement HTTP clients and servers
 	"net/http"
+  // gorilla/mux library as request routinng library
+  "github.com/gorilla/mux"
 )
 
 func main() {
+  //declare new router
+  r := mux.NewRouter()
+
 	// The "HandleFunc" method accepts a path and a function as arguments
 	// (Yes, we can pass functions as arguments, and even trat them like variables in Go)
 	// However, the handler function has to have the appropriate signature (as described by the "handler" function below)
-	http.HandleFunc("/", handler)
+	r.HandleFunc("/hello", handler).Methods("GET")
 
 	// After defining our server, we finally "listen and serve" on port 8080
 	// The second argument is the handler, which we will come to later on, but for now it is left as nil,
 	// and the handler defined above (in "HandleFunc") is used
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":8080", r)
 }
 
 // "handler" is our handler function. It has to follow the function signature of a ResponseWriter and Request type
