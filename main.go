@@ -33,5 +33,5 @@ func main() {
 // as the arguments.
 func handler(w http.ResponseWriter, r *http.Request) {
 	// For this case, we will always pipe "Hello World" into the response writer
-	fmt.Fprintf(w, "Hello World!")
+	fmt.Fprintf(w, "it works, yay!")
 }
