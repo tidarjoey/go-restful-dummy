@@ -13,8 +13,16 @@ import (
 func newRouter() *mux.Router {
 	//declare new router
   r := mux.NewRouter()
+
 	// The "HandleFunc" method accepts a path and a function as arguments
   r.HandleFunc("/testing-GET", handler).Methods("GET")
+
+	// declare static dir
+	staticFileDir := http.Dir("./assets")
+
+	// declare file server handler, with StripPrefix
+	staticFileHandler := http.StripPrefix("/assets/", http.FileServer(staticFileDir))
+
   return r
 }
 
