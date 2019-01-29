@@ -28,6 +28,9 @@ func newRouter() *mux.Router {
 	// we'll use PathPrefix method to math the routinngs from '/assets/'
 	r.PathPrefix("/assets/").Handler(staticFileHandler).Methods("GET")
 
+	// new get endpoint for computer
+	r.HandleFunc("/computer", getComputerHandler).Methods("GET")
+
   return r
 }
 
